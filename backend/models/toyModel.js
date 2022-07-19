@@ -1,13 +1,10 @@
 import mongoose from 'mongoose';
 
-const toySchema = new mongoose.Schema({
-  name: String,
-  description: String,
-  price: Number,
-  url: String,
-  quantity: Number
+const marketSchema = new mongoose.Schema({
+  title: String,
+  url: String
 })
 
-const Toy = mongoose.model('toy', toySchema);
+const Market = mongoose.model('toy', marketSchema);
 
-export default Toy;
+export default Market;

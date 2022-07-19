@@ -1,5 +1,14 @@
 import Conversation from "../models/conversationModel.js";
 
+export const getCategory = async (req, res) => {
+    try {
+        const myCategory = await Conversation.find({ category: `/${req.params.category}/i` })
+        res.status(200).json(myCategory);
+    } catch (error) {
+        res.status(404).json({message: error.message })
+    } 
+}
+
 export const createMessage = async (req, res) => {
     try {
         const updatedConversation = await Conversation.findById({_id: req.params.id});
@@ -7,8 +16,6 @@ export const createMessage = async (req, res) => {
         await updatedConversation.message.contenu.push(req.body.contenu)
         await updatedConversation.message.date.push(req.body.date)
         await updatedConversation.save()
-        
-        //updateConversation.save()
 
         res.status(200).json(updatedConversation)
     } catch (error) {

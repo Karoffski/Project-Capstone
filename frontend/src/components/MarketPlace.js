@@ -1,19 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
 const MarketPlace = () => {
-
+    let [data, setData] = useState([]);
+    let [search, setSearch] = useState(``);
+    
     useEffect(() => {
         fetchData();
-    })
+    }, [])
 
-    let [data, setData] = useState([]);
-    let [userSearch, setSearch] = useState([]);
-    
     const fetchData = async () => {
         try {
-            const res = await fetch("http://localhost:5000/users");
+            const res = await fetch("https://localhost:5000/marketplace");
             const json = await res.json();
             setData(json);
         } catch (error) {
@@ -21,23 +19,20 @@ const MarketPlace = () => {
         }
     }
 
+    console.log(data)
+
     return (
         <div className="marketplace">
-            <Box sx={{ width: 500, maxWidth: '100%' }}>
-                <TextField fullWidth onChange={(e) => setSearch(e.target.value)} label="Search for specific product" id="search" />
+                <TextField fullWidth onChange={e => setSearch(e.target.value)} label="Search for specific product" id="search" />
                 {data
-                .filter(toy => {
-                    if(userSearch === ''){
-                        return toy;
-                    }else if(toy.email.includes(userSearch)){
-                        return toy;
-                    }
-                })
-                .map((toy) => {
-                    <p>{toy.email}</p>
-                })
-                }
-            </Box>
+                .filter(toy => toy.email.toLowerCase().includes(search.toLowerCase()))
+                .map((toy, index) => {
+                    return(
+                    <div className='products'>
+                    <p key={index}>{toy.title}</p>
+                    </div>
+                    )
+                })}
         </div>
     )
 

@@ -5,7 +5,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import user from './routes/userRoute.js';
 import conversation from './routes/conversationRoute.js';
-import toys from ('./routes/marketRoute.js')
+import toys from './routes/toyRoute.js'
 dotenv.config()
 
 // Variables
@@ -14,14 +14,14 @@ const PORT = process.env.PORT || 4000;
 const database = process.env.MONGO_URI;
 
 // Parser
-app.use(cors());
-app.use(express.json({extended: true}))
-app.use(express.urlencoded({ extended: true}))
+app.use((cors()));
+app.use((express.json({extended: true})))
+app.use((express.urlencoded({ extended: true})))
 
 // Routes
 app.use('/users', user)
 app.use('/conversations', conversation)
-app.use('/marketplace', toys)
+app.use('/toys', toys)
 
 // MDB connexion
 mongoose.connect(database, { useNewUrlParser: true, useUnifiedTopology: true })

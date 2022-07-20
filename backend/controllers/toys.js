@@ -1,4 +1,4 @@
-import Market from "../models/marketModel.js";
+import Toy from "../models/toyModel.js";
 
 export const getToys =  async (req, res) => {
     try {

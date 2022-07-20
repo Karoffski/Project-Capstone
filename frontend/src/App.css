@@ -58,12 +58,18 @@
 }
 
 .marketplace {
-  margin-left: 50vh;
-  margin-right: 50vh;
+  margin-left: 40vh;
+  margin-right: 40vh;
   margin-top:  5vh;
 }
 
 .products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+#product {
   display: flex;
   justify-content: center;
 }

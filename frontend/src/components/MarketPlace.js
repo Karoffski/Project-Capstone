@@ -9,30 +9,29 @@ const MarketPlace = () => {
         fetchData();
     }, [])
 
-    const fetchData = async () => {
-        try {
-            const res = await fetch("https://localhost:5000/marketplace");
-            const json = await res.json();
-            setData(json);
-        } catch (error) {
-            console.log(error)
+    const fetchData = () => {
+        fetch("http://localhost:5000/toys")
+            .then((res) => {return res.json()})
+            .then((res) => {setData(res)});
         }
-    }
 
-    console.log(data)
+    console.log(data.title)
 
     return (
         <div className="marketplace">
                 <TextField fullWidth onChange={e => setSearch(e.target.value)} label="Search for specific product" id="search" />
+                <div className='products'>
                 {data
-                .filter(toy => toy.email.toLowerCase().includes(search.toLowerCase()))
+                .filter(toy => toy.title.toLowerCase().includes(search.toLowerCase()))
                 .map((toy, index) => {
                     return(
-                    <div className='products'>
-                    <p key={index}>{toy.title}</p>
+                    <div key={index} >
+                    <p id='product'>{toy.title}</p>
+                    <img src={toy.url}></img>
                     </div>
                     )
                 })}
+                </div>
         </div>
     )
 

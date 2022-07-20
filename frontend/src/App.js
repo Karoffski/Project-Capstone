@@ -17,7 +17,7 @@ function App() {
         <Route path='/aboutus' element={<AboutUs/>} />
         <Route path='/connexion' element={<ConnexionForm/>} />
         <Route path='/inscription' element={<InscriptionForm/>} />
-        <Route path='/marketplace' element={<MarketPlace/>} />
+        <Route path='/toys' element={<MarketPlace/>} />
         <Route path='/shoppingcart' element={<ShoppingCart/>} />
       </Routes>
         <Footer/>

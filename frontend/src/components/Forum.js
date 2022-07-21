@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import TextField from '@mui/material/TextField';
 
 export default function Forum() {
@@ -21,13 +22,14 @@ export default function Forum() {
     <div  className='forum'>
       <TextField fullWidth onChange={e => setSearch(e.target.value)} label="Search for specific topic" id="search"/>
       {posts
-        .filter(post => post.info.title.toLowerCase().includes(search.toLowerCase()))
+        .filter(post => post.title.toLowerCase().includes(search.toLowerCase()))
         .map((post, index) => {
           return (
             <div key={index} className='post'>
-              <p>{post.info.title}</p>
-              <p>{post.message.author[0]}</p>
-              <p>{post.message.date[0]}</p>
+              <p>{post.title}</p>
+              <p>{post.author[0]}</p>
+              <p>{post.date[0]}</p>
+              <Link to={`/forum/${post._id}`}> Afficher detail</Link>
             </div>
           )
         })}

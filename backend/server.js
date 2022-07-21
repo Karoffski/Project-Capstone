@@ -3,8 +3,10 @@ import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import user from './routes/userRoute.js';
-import conversation from './routes/conversationRoute.js'
+import userRoute from './routes/userRoute.js';
+import conversationRoute from './routes/conversationRoute.js'
+import messageRoute from './routes/messageRoute.js'
+
 dotenv.config()
 
 // Variables
@@ -18,8 +20,10 @@ app.use((express.json({extended: true})))
 app.use((express.urlencoded({ extended: true})))
 
 // Routes
-app.use('/users', user)
-app.use('/conversations', conversation)
+app.use('/users', userRoute)
+app.use('/conversations', conversationRoute)
+app.use('/messages', messageRoute)
+
 
 // MDB connexion
 mongoose.connect(database, { useNewUrlParser: true, useUnifiedTopology: true })

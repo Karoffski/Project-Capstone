@@ -61,12 +61,7 @@
   width: 30vh;
   height: 30vh;
 }
-/* .categories{
-  margin-top: 50px;
-  margin-left: 50px;
-  margin-right: 50px;
-  margin-bottom: 50px;
-} */
+
 .pagination{
   display: flex;
   justify-content: row;
@@ -89,3 +84,14 @@
   margin-top: 5vh;
 }
 
+.toys{
+  margin-left: 50vh;
+  margin-right: 50vh;
+  display: flex;
+
+}
+
+.toy{
+  width: 100px;
+  height: 100px;
+}

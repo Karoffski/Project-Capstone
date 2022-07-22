@@ -1,11 +1,11 @@
 import express from "express";
 const router = express.Router();
-import {createConversation, getConversations, getOneConversation, updateConversation, deleteConversation} from '../controllers/conversations.js';
-
+import {createMessage, createConversation, getConversations, getOneConversation, updateConversation, deleteConversation} from '../controllers/conversations.js';
 
 router.get('/', getConversations);
 router.get('/:id', getOneConversation);
 router.post('/', createConversation);
+router.post('/:id', createMessage);
 router.put('/:id', updateConversation);
 router.delete('/:id', deleteConversation);
 

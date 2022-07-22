@@ -2,7 +2,8 @@ import * as React from 'react';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
-import Imag1 from '../images/2.webp'
+import { Link } from 'react-router-dom';
+
 
 export default function Market() {
   return (
@@ -10,9 +11,12 @@ export default function Market() {
       {itemData.map((item) => {
         return(
           <div key={item._id}>
+            
           <img className='toy' src={item.img}/>
+          <Link to={`/forum/${item._id}`}> Afficher detail</Link>
           <p>{item.title}</p>
           <p>{item.author}</p>
+         
           </div>
         )})}
   

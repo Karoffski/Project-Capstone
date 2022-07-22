@@ -12,6 +12,7 @@ import ConversationPage from './components/ConversationPage';
 import Forum from './components/Forum';
 import Conversation from './components/ConversationPage';
 import MarketPlace from './components/MarketPlace'
+import Chat from './components/Chat';
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
           <Route path='/marketplace' element={<MarketPlace />} />
           <Route path='/inscription' element={<InscriptionForm />} />
           <Route path='/forum' element={<Forum />} />
+          <Route path='/chat' element={<Chat />} />
           <Route path="/conversations/:id" element={<ConversationPage />} />
           <Route path="/market" element={<Market />} />
         </Routes>

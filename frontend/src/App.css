@@ -84,14 +84,24 @@
   margin-top: 5vh;
 }
 
-.toys{
-  margin-left: 50vh;
-  margin-right: 50vh;
-  display: flex;
-
-}
+  .toys {
+    margin-left: 25vh;
+    justify-content: center;
+    margin-top: 10vh;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 200px;
+    
+  }
+ /* grid-tepmplate-columns:200px 200px 200px; */
 
 .toy{
+  
   width: 100px;
   height: 100px;
+ 
+
 }

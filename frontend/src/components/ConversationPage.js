@@ -6,7 +6,8 @@ import Button from '@mui/material/Button';
 const ConversationPage = () => {
 
     const [conversation, setConversation] = useState({messages: []});
-    const [content, setContent] = useState({content: ""});
+    const [content, setContent] = useState({ content: ""});
+    const [author, setAuthor] = useState({ content: ""});
     const {id} = useParams();
 
     useEffect(() => {
@@ -16,7 +17,7 @@ const ConversationPage = () => {
     async function handleSubmit(e) {
         e.preventDefault();
     
-        const newUser = { ...content };
+        const newUser = { ...content,...author};
     
         await fetch(`http://localhost:5000/conversations/${id}`, {
           method: 'POST',
@@ -27,6 +28,7 @@ const ConversationPage = () => {
         })
           .catch(error => window.alert(error))
           .then(setContent({
+            author: "",
             content: ""
           }))
           window.location.reload(false)
@@ -50,7 +52,15 @@ const ConversationPage = () => {
             )
          })}
         <div className='uploadmessage'><br></br>
-         <p style={{color: 'white'}}>Please state your message</p><br></br>
+        <p style={{color: 'white'}}>Please indicate the author</p>
+         <TextField
+         id="author"
+         label="Author"
+         type=""
+         sx={{mb: "3vh", width: "70%", backgroundColor: "white"}}
+         onChange={(e) => setAuthor({ author: e.target.value })}
+         ></TextField>
+         <p style={{color: 'white'}}>Please state your message</p>
          <TextField
          id="message"
          label="Message"

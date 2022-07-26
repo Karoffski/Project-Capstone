@@ -28,6 +28,8 @@ function App() {
         <Route path='/shoppingcart' element={<ShoppingCart/>} />
         <Route path='/forum' element={<Forum/>}/>
         <Route path="/forum/:id" element={<ConversationPage/>} />
+        <Route path="/pagenotfound" element={<PageNotFound/>} />
+        <Route path="*" element={<Navigate to ="/pagenotfound" />}/>
       </Routes>
         <Footer/>
       </Router>
